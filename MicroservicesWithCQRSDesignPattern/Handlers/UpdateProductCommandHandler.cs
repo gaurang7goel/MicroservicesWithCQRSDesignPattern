@@ -23,10 +23,12 @@ namespace MicroservicesWithCQRSDesignPattern.Handlers
             {
                 // Update the product properties
                 productToUpdate.ProductName = command.Name;
+                productToUpdate.UnitPrice = command.Price;
                 // Update other properties
 
                 // Save changes to the repository
                 await _repository.UpdateAsync(productToUpdate);
+                await _repository.SaveAsync();
             }
             else
             {

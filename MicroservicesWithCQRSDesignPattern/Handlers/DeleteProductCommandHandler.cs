@@ -21,6 +21,7 @@ namespace MicroservicesWithCQRSDesignPattern.Handlers
             if (productToDelete != null)
             {
                 await _repository.DeleteAsync(productToDelete);
+                await _repository.SaveAsync();
             }
             else
             {

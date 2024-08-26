@@ -19,11 +19,15 @@ namespace MicroservicesWithCQRSDesignPattern.Controllers
         public ProductController(
             ICommandHandler<CreateProductCommand> createProductCommandHandler,
             IQueryHandler<GetProductsQuery, IEnumerable<GetAllProductCommand>> getProductsQueryHandler,
-            ICommandHandler<UpdateProductCommand> updateProductCommandHandler)
+            ICommandHandler<UpdateProductCommand> updateProductCommandHandler,
+            ICommandHandler<DeleteProductCommand> deleteProductCommandHandler
+            )
+
         {
             _createProductCommandHandler = createProductCommandHandler;
             _getProductsQueryHandler = getProductsQueryHandler;
             _updateProductCommandHandler = updateProductCommandHandler;
+            _deleteProductCommandHandler = deleteProductCommandHandler;
         }
 
         [HttpPost(nameof(CreateProduct))]
